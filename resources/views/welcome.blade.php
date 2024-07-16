@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Invesys</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link href="{{ asset('vendor/dist/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('vendor/dist/css/adminlte.min.css') }}" rel="stylesheet">
-  
-</head>
+@include('header') 
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -118,7 +106,7 @@
           </div>
         </div>
       <!-- Default box -->
-      <div class="card">
+      <!--<div class="card">
         <div class="card-header">
           <h3 class="card-title">Title</h3>
 
@@ -134,13 +122,9 @@
         <div class="card-body">
           Start creating your amazing application!
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
           Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
+      </div>-->
 
     </section>
     <!-- /.content -->

@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'sys_name' => env('SYS_NAME'),
+    'sys_logo_url' => env('SYS_LOGO_URL'),
+
 ];
