@@ -10,12 +10,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Usuarios</h1>
+            <h1>Crear usuarios</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
+              <li class="breadcrumb-item"><a href="#">Administracion</a></li>
+              <li class="breadcrumb-item active">Usuarios</li>
+              <li class="breadcrumb-item active">Crear</li>
             </ol>
           </div>
         </div>
@@ -29,40 +30,37 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lista de usuarios <button type="button" class="btn btn-sm btn-success">Crear usuario</button></h3>
+                <h3 class="card-title">Información del usuario</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Nombre de usuario</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Esteban Antonio
-                    </td>
-                    <td>Sánchez Corvalán</td>
-                    <td> esteban@invensys.cl</td>
-                    <td>esteban1</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Nombre de usuario</th>
-                  </tr>
-                  </tfoot>
-                </table>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombres</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar nombres">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Apellidos</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar usuario">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Contraseña</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar contraseña">
+                </div>
+                <div class="row mt-3 justify-content-center">
+                    <!-- /.col -->
+                    <div class="col-2 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                    </div>
+                    <!-- /.col -->
+                  </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -112,6 +110,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
