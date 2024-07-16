@@ -11,3 +11,6 @@ Route::get('/login', function () {
 Route::get('/usuarios/lista', function () {
     return view('administracion.usuarios/lista');
 });
+Route::get('/recupera', function () {
+    return view('recupera');
+});
