@@ -27,7 +27,7 @@
           </div>
         </div>
         <p class="mb-1 text-right">
-            <a href="forgot-password.html">¿Olvidó su contraseña?</a>
+            <a href="{{ route('recupera') }}">¿Olvidó su contraseña?</a>
         </p>
         <div class="row mt-3 justify-content-center">
           <!-- /.col -->

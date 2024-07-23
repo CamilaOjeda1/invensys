@@ -14,7 +14,7 @@ Route::get('/usuarios/lista', function () {
 })->name('usuarios.lista');
 Route::get('/recupera', function () {
     return view('recupera');
-});
+})->name('recupera');
 Route::get('/usuarios/crear', function () {
     return view('administracion.usuarios/crear');
 })->name('usuarios.crear');
