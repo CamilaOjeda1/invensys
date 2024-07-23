@@ -57,7 +57,10 @@
                 <div class="row mt-3 justify-content-center">
                     <!-- /.col -->
                     <div class="col-2 d-flex justify-content-center">
-                      <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                      <button type="submit" class="btn btn-success btn-block">Guardar</button>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                      <a href="{{ route('usuarios.lista') }}" class="btn btn-primary btn-block">Volver</a>
                     </div>
                     <!-- /.col -->
                   </div>

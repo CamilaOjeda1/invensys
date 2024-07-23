@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lista de usuarios <button type="button" class="btn btn-sm btn-success">Crear usuario</button></h3>
+                <h3 class="card-title">Lista de usuarios <a href="{{ route('usuarios.crear') }}" class="btn btn-sm btn-success">Crear usuario</a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

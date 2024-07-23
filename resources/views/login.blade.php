@@ -9,7 +9,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingrese usuario y contraseña</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="{{ route('inicio') }}" method="get">
         <div class="input-group mb-3">
           <input type="usuario" class="form-control" placeholder="usuario">
           <div class="input-group-append">

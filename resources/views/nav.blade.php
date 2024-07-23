@@ -158,18 +158,6 @@
                   <p>Dashboard v1</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -182,7 +170,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="{{ route('usuarios.lista') }}" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
