@@ -118,7 +118,7 @@
           <img src="{{ asset('vendor/dist/img/user.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Usuario conectado</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -128,7 +128,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ route('inicio') }}" class="nav-link {{ request()->is('inicio') ? 'active' : '' }}">
               <i class="fas fa-home nav-icon"></i>
               <p>
                 Inicio
@@ -136,15 +136,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ route('venta.index') }}" class="nav-link {{ request()->is('venta*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-basket"></i>
               <p>
                 Venta
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ request()->is('producto*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('producto*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Mantenedores
@@ -153,9 +153,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('producto*') ? 'active' : '' }}">
+                  <i class="fas fa-shopping-basket"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('producto*') ? 'active' : '' }}">
+                  <i class="fas fa-shopping-basket"></i>
+                  <p>Proveedores</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('producto*') ? 'active' : '' }}">
+                  <i class="fas fa-shopping-basket"></i>
+                  <p>Marca</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('producto*') ? 'active' : '' }}">
+                  <i class="fas fa-shopping-basket"></i>
+                  <p>Categorias</p>
                 </a>
               </li>
             </ul>
@@ -178,7 +202,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('login') }}" class="nav-link">
+            <a href="{{ route('cerrar_sesion') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Cerrar sesión

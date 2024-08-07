@@ -150,7 +150,7 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('vendor/dist/js/demo.js') }}"></script>
+<!--<script src="{{ asset('vendor/dist/js/demo.js') }}"></script>-->
 <script>
     //var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
     var areaChartData = {
