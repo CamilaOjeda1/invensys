@@ -10,7 +10,6 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        dd("2");
         return view('login');
     }
 
@@ -23,9 +22,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('inicio');
         }
-
-        // Autenticación fallida
-        //dd($request);
         return redirect()->back()->withErrors(['correo' => 'Las credenciales no coinciden con nuestros registros.']);
     }
 

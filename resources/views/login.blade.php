@@ -27,6 +27,9 @@
             </div>
           </div>
         </div>
+        @error('correo')
+          <span style="color:red;">{{ $message }}</span>
+      @enderror
         <p class="mb-1 text-right">
             <a href="{{ route('recupera') }}">¿Olvidó su contraseña?</a>
         </p>
@@ -36,6 +39,7 @@
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
           </div>
           <!-- /.col -->
+
         </div>
       </form>
     </div>
