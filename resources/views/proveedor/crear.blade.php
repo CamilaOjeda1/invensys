@@ -33,7 +33,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{ route('proveedor.store') }}" method="POST">
+                <form  method="POST">
                     @csrf
                         <div class="row">
                             <div class="col-6">
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="form-group">
-                                    <a href="{{ route('proveedor.index') }}" class="btn btn-primary btn-block">Volver</a>
+                                    <a class="btn btn-primary btn-block">Volver</a>
                                 </div>
                             </div>
                         </div>        
