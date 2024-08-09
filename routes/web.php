@@ -39,3 +39,8 @@ Route::get('venta/crear', [VentaController::class, 'create'])->name('venta.crear
 //Route::get('login', [AuthController::class, 'showLoginForm'])->name('ingreso');
 Route::post('login', [AuthController::class, 'login'])->name('ingreso');
 Route::get('logout', [AuthController::class, 'logout'])->name('cerrar_sesion');
+
+//Route::resource('proveedor', ProveedorController::class);
+Route::get('proveedor', [ProductoController::class, 'index'])->name('proveedor.index')->middleware('auth');
+Route::post('proveedor/store', [ProductoController::class, 'store'])->name('proveedor.store');
+Route::get('proveedor/crear', [ProductoController::class, 'create'])->name('proveedor.crear')->middleware('auth');

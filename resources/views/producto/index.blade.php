@@ -8,7 +8,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+       <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Productos</h1>
           </div>
@@ -40,6 +40,7 @@
                         <th>ID</th>
                         <th>Producto</th>
                         <th>Cod. Barra</th>
+                        <th>Descripción</th>
                         <th>Fecha vencimiento</th>
                         <th>Cantidad</th>
                         <th>$ Compra</th>
@@ -84,7 +85,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Invensys: Sistema ágil para el registo de inventario de un Minimarket.
   </footer>
 
   <!-- Control Sidebar -->

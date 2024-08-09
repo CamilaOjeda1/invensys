@@ -7,12 +7,12 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Ingrese usuario y contraseña</p>
+      <p class="login-box-msg">Registro</p>
 
       <form action="{{ route('ingreso') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" id="correo" name="email" class="form-control" placeholder="usuario">
+          <input type="text" id="correo" name="email" class="form-control" placeholder="Nombre de usuario">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" id="password" name="password" class="form-control" placeholder="contraseña">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

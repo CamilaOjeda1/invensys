@@ -8,15 +8,14 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+       <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear usuarios</h1>
+            <h1>Proveedor</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Administracion</a></li>
-              <li class="breadcrumb-item active">Usuarios</li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item"><a href="#">Proveedor</a></li>
+              <li class="breadcrumb-item active">Lista</li>
             </ol>
           </div>
         </div>
@@ -30,40 +29,45 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Información del usuario</h3>
+                <h3 class="card-title">Lista de proveedores</h3>
+                <a href="{{ route('proveedor.crear') }}" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-plus"></i> Crear proveedor </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Nombres</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar nombres">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Apellidos</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar apellidos">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar usuario">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Contraseña</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar contraseña">
-                </div>
-                <div class="row mt-3 justify-content-center">
-                    <!-- /.col -->
-                    <div class="col-2 d-flex justify-content-center">
-                      <button type="submit" class="btn btn-success btn-block">Guardar</button>
-                    </div>
-                    <div class="col-2 d-flex justify-content-center">
-                      <a href="{{ route('usuarios.lista') }}" class="btn btn-primary btn-block">Volver</a>
-                    </div>
-                    <!-- /.col -->
-                  </div>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Estado</th>
+                        <th>Fecha registro</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($proveedores as $proveedor)
+                        <tr>
+                            <td>{{ $proveedor->id_proveedor }}</td>
+                            <td>{{ $proveedor->nombre_proveedor }}</td>
+                            <td>{{ $proveedor->telefono }}</td>
+                            <td>{{ $proveedor->direccion }}</td>
+                            <td>{{ $proveedor->estado ? 'Vigente' : 'No Vigente' }}</td>
+                            <td>{{ $proveedor->fecha_registro }}</td>
+                            <td><a href="{{ route('proveedor.edit', $proveedor->id_proveedor) }}" class="btn btn-block btn-warning btn-sm">Editar</a></td>
+                            <td>
+                                <form action="{{ route('proveedor.destroy', $proveedor->id_proveedor) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-block btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                  </tbody>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
@@ -82,7 +86,7 @@
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
-    <strong>Invensys: Sistema ágil para el registo de inventario de un Minimarket.
+    <strong>Invensys: Sistema ágil para el registro de inventario de un Minimarket.
   </footer>
 
   <!-- Control Sidebar -->
@@ -112,17 +116,12 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
+        "language": {
+                "url": "{{ asset('vendor/js/lang/es-ES.json') }}"
+        },
+      "responsive": true, 
+      "lengthChange": false, 
       "autoWidth": false,
-      "responsive": true,
     });
   });
 </script>
