@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\ProveedorController;
 
 Route::get('/', function () {
     return view('login');
@@ -32,6 +33,9 @@ Route::get('/inicio', function () {
 Route::get('producto', [ProductoController::class, 'index'])->name('producto.index')->middleware('auth');
 Route::post('producto/store', [ProductoController::class, 'store'])->name('producto.store');
 Route::get('producto/crear', [ProductoController::class, 'create'])->name('producto.crear')->middleware('auth');
+Route::get('producto/editar/{id}', [ProductoController::class, 'edit'])->name('producto.editar')->middleware('auth');
+Route::get('producto/actualizar/{id}', [ProductoController::class, 'update'])->name('producto.actualizar')->middleware('auth');
+Route::patch('/producto/{id}/desactivar', [ProductoController::class, 'desactivar'])->name('producto.desactivar');
 
 Route::get('venta', [VentaController::class, 'index'])->name('venta.index')->middleware('auth');
 Route::get('venta/crear', [VentaController::class, 'create'])->name('venta.crear')->middleware('auth');
@@ -41,14 +45,14 @@ Route::post('login', [AuthController::class, 'login'])->name('ingreso');
 Route::get('logout', [AuthController::class, 'logout'])->name('cerrar_sesion');
 
 //Route::resource('proveedor', ProveedorController::class);
-/*Route::get('proveedor', [ProductoController::class, 'index'])->name('proveedor.index')->middleware('auth');
-Route::post('proveedor/store', [ProductoController::class, 'store'])->name('proveedor.store');
-Route::get('proveedor/crear', [ProductoController::class, 'create'])->name('proveedor.crear')->middleware('auth');*/
+Route::get('proveedor', [ProveedorController::class, 'index'])->name('proveedor.index')->middleware('auth');
+Route::post('proveedor/store', [ProveedorController::class, 'store'])->name('proveedor.store');
+Route::get('proveedor/crear', [ProveedorController::class, 'create'])->name('proveedor.crear')->middleware('auth');
 
-Route::get('/proveedor', function () {
+/*Route::get('/proveedor', function () {
     return view('proveedor.index');
-})->name('proveedor')->middleware('auth');
+})->name('proveedor')->middleware('auth');*/
 
-Route::get('/proveedor', function () {
+Route::get('/proveedor/crear', function () {
     return view('proveedor.crear');
 })->name('proveedor.crear')->middleware('auth');

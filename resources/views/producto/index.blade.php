@@ -34,18 +34,26 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }} (ID: {{ session('producto_id') }})
+                    </div>
+                @endif
+                @if (session('success2'))
+                    <div class="alert alert-success">
+                        {{ session('success2') }} (ID: {{ session('producto_id') }})
+                    </div>
+                @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                         <th>ID</th>
                         <th>Producto</th>
                         <th>Cod. Barra</th>
-                        <th>Descripción</th>
                         <th>Fecha vencimiento</th>
                         <th>Cantidad</th>
                         <th>$ Compra</th>
                         <th>$ Venta</th>
-                        <th>Fecha registro</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -56,13 +64,18 @@
                             <td>{{ $producto->id_producto }}</td>
                             <td>{{ $producto->nombre_producto }}</td>
                             <td>{{ $producto->codigo_barra }}</td>
-                            <td>{{ $producto->descripcion }}</td>
+                            <td>{{ $producto->fecha_vencimiento }}</td>
                             <td>{{ $producto->precio_compra }}</td>
                             <td>{{ $producto->precio_venta }}</td>
                             <td>{{ $producto->cantidad }}</td>
-                            <td>{{ $producto->fecha_registro }}</td>
-                            <td><button type="button" class="btn btn-block btn-warning btn-sm">Editar</button></td>
-                            <td><button type="button" class="btn btn-block btn-danger btn-sm">Eliminar</button></td>
+                            <td><a  href="{{ route('producto.editar', $producto->id_producto) }}"  type="button" class="btn btn-block btn-warning btn-sm">Editar</a></td>
+                            <td>
+                              <form action="{{ route('producto.desactivar', $producto->id_producto) }}" method="POST" onsubmit="return confirm('¿Está seguro que desea eliminar este producto?');">
+                                  @csrf
+                                  @method('PATCH')
+                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                              </form>
+                          </td>
                         </tr>
                     @endforeach
                   </tbody>
@@ -81,12 +94,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Invensys: Sistema ágil para el registo de inventario de un Minimarket.
-  </footer>
+  @include('footer') 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -15,7 +15,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
+        $productos = Producto::where('vigencia', 1)->get();
         return view('producto.index', compact('productos'));
     }
 
@@ -53,7 +53,11 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $marcas = Marca::all();
+        $proveedor = Proveedor::all();
+        $categoria = Categoria::all();
+        $producto = Producto::findOrFail($id);
+        return view('producto.editar', compact('producto','marcas','proveedor','categoria'));
     }
 
     /**
@@ -61,7 +65,10 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        $producto->update($request->all());
+
+        return redirect()->route('producto.index')->with(['success'=>'Producto actualizado correctamente','producto_id' => $producto->id_producto]);
     }
 
     /**
@@ -70,5 +77,14 @@ class ProductoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function desactivar($id)
+    {
+        $producto = Producto::findOrFail($id);
+        $producto->vigencia = 0;
+        $producto->save();
+
+        return redirect()->route('producto.index')->with(['success2'=>'Producto eliminado correctamente','producto_id' => $producto->id_producto]);
     }
 }

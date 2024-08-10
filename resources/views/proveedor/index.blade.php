@@ -56,11 +56,10 @@
                             <td>{{ $proveedor->direccion }}</td>
                             <td>{{ $proveedor->estado ? 'Vigente' : 'No Vigente' }}</td>
                             <td>{{ $proveedor->fecha_registro }}</td>
-                            <td><a href="{{ route('proveedor.edit', $proveedor->id_proveedor) }}" class="btn btn-block btn-warning btn-sm">Editar</a></td>
+                            <td><a class="btn btn-block btn-warning btn-sm">Editar</a></td>
                             <td>
-                                <form action="{{ route('proveedor.destroy', $proveedor->id_proveedor) }}" method="POST">
+                                <form  method="POST">
                                     @csrf
-                                    @method('DELETE')
                                     <button type="submit" class="btn btn-block btn-danger btn-sm">Eliminar</button>
                                 </form>
                             </td>
@@ -82,12 +81,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Invensys: Sistema ágil para el registro de inventario de un Minimarket.
-  </footer>
+  @include('footer') 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
