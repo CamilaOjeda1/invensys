@@ -10,11 +10,11 @@
       <div class="container-fluid">
        <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proveedor</h1>
+            <h1>Categoria</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Proveedor</a></li>
+              <li class="breadcrumb-item"><a href="#">Categoria</a></li>
               <li class="breadcrumb-item active">Lista</li>
             </ol>
           </div>
@@ -29,8 +29,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lista de proveedores</h3>
-                <a href="{{ route('proveedor.crear') }}" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-plus"></i> Crear proveedor </a>
+                <h3 class="card-title">Lista de categorias</h3>
+                <a href="{{ route('categoria.crear') }}" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-plus"></i> Crear categoria </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -39,8 +39,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
                         <th>Estado</th>
                         <th>Fecha registro</th>
                         <th>Editar</th>
@@ -48,14 +46,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($proveedores as $proveedor)
+                    @foreach($categorias as $categoria)
                         <tr>
-                            <td>{{ $proveedor->id_proveedor }}</td>
-                            <td>{{ $proveedor->nombre_proveedor }}</td>
-                            <td>{{ $proveedor->telefono }}</td>
-                            <td>{{ $proveedor->direccion }}</td>
-                            <td>{{ $proveedor->estado ? 'No Vigente' : 'Vigente' }}</td>
-                            <td>{{ $proveedor->fecha_registro }}</td>
+                            <td>{{ $categoria->id_categoria }}</td>
+                            <td>{{ $categoria->nombre_categoria }}</td>
+                            <td>{{ $categoria->estado ? 'No Vigente' : 'Vigente' }}</td>
+                            <td>{{ $categoria->fecha_registro }}</td>
                             <td><a class="btn btn-block btn-warning btn-sm">Editar</a></td>
                             <td>
                                 <form  method="POST">

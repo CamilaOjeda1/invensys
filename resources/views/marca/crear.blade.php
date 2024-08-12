@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proveedor</h1>
+            <h1>Marca</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Proveedor</a></li>
+              <li class="breadcrumb-item"><a href="#">Marca</a></li>
               <li class="breadcrumb-item active">Crear</li>
             </ol>
           </div>
@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Ingresar proveedor</h3>
+                <h3 class="card-title">Ingresar marca</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -38,8 +38,8 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="nombre_proveedor">Nombre proveedor</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" maxlength="45">
+                                    <label for="nombre_marca">Nombre marca</label>
+                                    <input type="text" class="form-control" id="nombre_marca" name="nombre_marca" maxlength="45">
                                 </div>
                             </div>
                             <div class="col-6">

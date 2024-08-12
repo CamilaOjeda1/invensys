@@ -10,11 +10,11 @@
       <div class="container-fluid">
        <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proveedor</h1>
+            <h1>Marca</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Proveedor</a></li>
+              <li class="breadcrumb-item"><a href="#">Marca</a></li>
               <li class="breadcrumb-item active">Lista</li>
             </ol>
           </div>
@@ -29,8 +29,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lista de proveedores</h3>
-                <a href="{{ route('proveedor.crear') }}" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-plus"></i> Crear proveedor </a>
+                <h3 class="card-title">Lista de marcas</h3>
+                <a href="{{ route('marca.crear') }}" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-plus"></i> Crear marca </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -39,23 +39,19 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
+                        <th>Descripción</th>
                         <th>Estado</th>
-                        <th>Fecha registro</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($proveedores as $proveedor)
+                    @foreach($marcas as $marca)
                         <tr>
-                            <td>{{ $proveedor->id_proveedor }}</td>
-                            <td>{{ $proveedor->nombre_proveedor }}</td>
-                            <td>{{ $proveedor->telefono }}</td>
-                            <td>{{ $proveedor->direccion }}</td>
-                            <td>{{ $proveedor->estado ? 'No Vigente' : 'Vigente' }}</td>
-                            <td>{{ $proveedor->fecha_registro }}</td>
+                            <td>{{ $marca->id_marca }}</td>
+                            <td>{{ $marca->nombre_marca }}</td>
+                            <td>{{ $marca->descripcion }}</td>
+                            <td>{{ $marca->estado ? 'No Vigente' : 'Vigente' }}</td>
                             <td><a class="btn btn-block btn-warning btn-sm">Editar</a></td>
                             <td>
                                 <form  method="POST">

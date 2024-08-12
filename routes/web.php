@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\CategoriaController;
 
 Route::get('/', function () {
     return view('login');
@@ -49,6 +51,11 @@ Route::get('proveedor', [ProveedorController::class, 'index'])->name('proveedor.
 Route::post('proveedor/store', [ProveedorController::class, 'store'])->name('proveedor.store');
 Route::get('proveedor/crear', [ProveedorController::class, 'create'])->name('proveedor.crear')->middleware('auth');
 
+//Route::resource('marca', MarcaController::class);
+Route::get('marca', [MarcaController::class, 'index'])->name('marca.index')->middleware('auth');
+Route::post('marca/store', [MarcaController::class, 'store'])->name('marca.store');
+Route::get('marca/crear', [MarcaController::class, 'create'])->name('marca.crear')->middleware('auth');
+
 /*Route::get('/proveedor', function () {
     return view('proveedor.index');
 })->name('proveedor')->middleware('auth');*/
@@ -56,3 +63,7 @@ Route::get('proveedor/crear', [ProveedorController::class, 'create'])->name('pro
 Route::get('/proveedor/crear', function () {
     return view('proveedor.crear');
 })->name('proveedor.crear')->middleware('auth');
+
+Route::get('categoria', [CategoriaController::class, 'index'])->name('categoria.index')->middleware('auth');
+Route::post('categoria/store', [CategoriaController::class, 'store'])->name('categoria.store');
+Route::get('categoria/crear', [CategoriaController::class, 'create'])->name('categoria.crear')->middleware('auth');

@@ -51,9 +51,9 @@
                         <th>Producto</th>
                         <th>Cod. Barra</th>
                         <th>Fecha vencimiento</th>
-                        <th>Cantidad</th>
                         <th>$ Compra</th>
                         <th>$ Venta</th>
+                        <th>Cantidad</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>

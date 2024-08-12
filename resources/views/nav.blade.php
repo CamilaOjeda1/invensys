@@ -53,8 +53,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item {{ request()->is('producto*') || request()->is('proveedor*') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ request()->is('producto*') || request()->is('proveedor*') ? 'active' : '' }}">
+          <li class="nav-item {{ request()->is('producto*') || request()->is('proveedor*') || request()->is('marca*') || request()->is('categoria*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('producto*') || request()->is('proveedor*') || request()->is('marca*') || request()->is('categoria*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Mantenedores
@@ -79,7 +79,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('marca*') ? 'active' : '' }}">
+                <a href="{{ route('marca.index') }}" class="nav-link {{ request()->is('marca*') ? 'active' : '' }}">
                   <i class="fas fa-shopping-basket"></i>
                   <p>Marca</p>
                 </a>
@@ -87,7 +87,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('producto.index') }}" class="nav-link {{ request()->is('categoria*') ? 'active' : '' }}">
+                <a href="{{ route('categoria.index') }}" class="nav-link {{ request()->is('categoria*') ? 'active' : '' }}">
                   <i class="fas fa-shopping-basket"></i>
                   <p>Categorias</p>
                 </a>
