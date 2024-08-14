@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Código barra</label>
+                                    <label for="exampleInputEmail1">Código barra (Debe contener ocho números)</label>
                                     <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" maxlenght="15">
                                 </div>
                             </div>
