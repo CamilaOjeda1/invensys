@@ -9,9 +9,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Recuperar contraseña</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="{{ route('recupera_contrasena') }}" method="get">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="ingrese email">
+          <input type="email" name="email" class="form-control" placeholder="ingrese email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -26,6 +26,19 @@
           <!-- /.col -->
         </div>
       </form>
+
+      <div class="row">
+        <div class="col-12">
+          @error('correo')
+            <span style="color:red;">{{ $message }}</span>
+          @enderror
+          @if (session('status'))
+              <span style="color:green;">
+                  {{ session('status') }}
+              </span>
+          @endif
+        </div>
+      </div>
     </div>
     <!-- /.login-card-body -->
   </div>

@@ -87,4 +87,22 @@ class ProductoController extends Controller
 
         return redirect()->route('producto.index')->with(['success2'=>'Producto eliminado correctamente','producto_id' => $producto->id_producto]);
     }
+
+    public function buscar(Request $request)
+    {
+        $codigoBarra = $request->get('codigo_barra');
+        $producto = Producto::where('codigo_barra', $codigoBarra)->where('vigencia', 1)->first();
+
+        if ($producto) {
+            return response()->json([
+                'success' => true,
+                'producto' => $producto
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Producto no encontrado o no vigente.'
+            ]);
+        }
+    }
 }

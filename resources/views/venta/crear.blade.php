@@ -33,17 +33,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                    <form id="buscarProductoForm">
+                      @csrf
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Código barra</label>
-                                    <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" maxlenght="15">
+                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlenght="15">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Cantidad</label>
-                                    <input type="number" class="form-control" id="descripcion" name="descripcion" maxlenght="45">
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad" maxlenght="45">
                                 </div>
                             </div>
                         </div>
@@ -59,6 +61,7 @@
                               </div>
                           </div>
                       </div> 
+                    </form>
                         <div class="card">
                             <div class="card-header">
                             <h3 class="card-title">Esta venta</h3>
@@ -83,7 +86,7 @@
                         <div class="row">
                           <div class="col-12">
                             <div class="callout callout-info">
-                              <h5>Total venta: $1.200</h5>
+                              <h5>Total venta: $<span class="valor_total_d">0</span></h5>
                             </div>
                           </div>
                         </div>
@@ -138,12 +141,53 @@ function mayus(e) {
     e.value = e.value.toUpperCase();
 }
 
-$( ".lista_producto" ).on( "click", function() {
+/*$( ".lista_producto" ).on( "click", function() {
   var producto = "<tr><td>Chocman</td>";
   producto += "<td>300</td>";
   producto += "<td>2</td>";
   producto += "<td>600</td>";
   $("#detalle_venta").append(producto);
+});*/
+
+$(document).ready(function(){
+    $('#buscarProductoForm').on('submit', function(e){
+        e.preventDefault();
+
+        var codigoBarra = $('#codigo_barra').val();
+        var cantidad = $('#cantidad').val();
+
+        $.ajax({
+            url: "{{ route('producto.buscar') }}",
+            method: "GET",
+            data: { codigo_barra: codigoBarra },
+            success: function(response){
+                if(response.success) {
+                  var producto = "<tr><td>"+response.producto.nombre_producto+"</td>";
+                  producto += "<td>$"+response.producto.precio_venta+"</td>";
+                  producto += "<td>"+cantidad+"</td>";                  
+                  var precio_final = response.producto.precio_venta * cantidad;
+                  producto += "<td>$"+precio_final+"</td>";
+                  $("#detalle_venta").append(producto);
+                  var valor = parseInt($('.valor_total_d').text());
+                  $(".valor_total_d").html(valor + precio_final);
+                  /*$('#productoResultado').html(`
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">${response.producto.nombre_producto}</h5>
+                                <p class="card-text">Descripción: ${response.producto.descripcion}</p>
+                                <p class="card-text">Precio: $${response.producto.precio_venta}</p>
+                            </div>
+                        </div>
+                    `);*/
+                } else {
+                    $('#productoResultado').html(`<div class="alert alert-danger">${response.message}</div>`);
+                }
+            },
+            error: function() {
+                $('#productoResultado').html('<div class="alert alert-danger">Error en la búsqueda. Intente nuevamente.</div>');
+            }
+        });
+    });
 });
 </script>
 </body>

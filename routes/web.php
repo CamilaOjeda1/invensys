@@ -17,8 +17,8 @@ Route::get('/login', function () {
 });
 Route::get('/usuarios/lista', function () {
     return view('administracion.usuarios/lista');
-
 })->name('usuarios.lista');
+
 Route::get('/recupera', function () {
     return view('recupera');
 })->name('recupera');
@@ -38,13 +38,15 @@ Route::get('producto/crear', [ProductoController::class, 'create'])->name('produ
 Route::get('producto/editar/{id}', [ProductoController::class, 'edit'])->name('producto.editar')->middleware('auth');
 Route::get('producto/actualizar/{id}', [ProductoController::class, 'update'])->name('producto.actualizar')->middleware('auth');
 Route::patch('/producto/{id}/desactivar', [ProductoController::class, 'desactivar'])->name('producto.desactivar');
+Route::get('/producto/buscar', [ProductoController::class, 'buscar'])->name('producto.buscar');
 
 Route::get('venta', [VentaController::class, 'index'])->name('venta.index')->middleware('auth');
 Route::get('venta/crear', [VentaController::class, 'create'])->name('venta.crear')->middleware('auth');
 
-//Route::get('login', [AuthController::class, 'showLoginForm'])->name('ingreso');
 Route::post('login', [AuthController::class, 'login'])->name('ingreso');
 Route::get('logout', [AuthController::class, 'logout'])->name('cerrar_sesion');
+
+Route::get('/recupera_contrasena', [AuthController::class, 'recupera_contrasena'])->name('recupera_contrasena');
 
 //Route::resource('proveedor', ProveedorController::class);
 Route::get('proveedor', [ProveedorController::class, 'index'])->name('proveedor.index')->middleware('auth');
