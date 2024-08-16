@@ -38,8 +38,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label for="exampleInputEmail1">Código barra</label>
                                     <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlenght="15">
+=======
+                                    <label for="exampleInputEmail1">Código barra (Debe contener ocho números)</label>
+                                    <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" maxlenght="15">
+>>>>>>> e99e384dcf536c78ff83bec6ab4cd8b8a6466806
                                 </div>
                             </div>
                             <div class="col-6">

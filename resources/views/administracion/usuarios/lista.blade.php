@@ -55,12 +55,12 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>ID</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Nombre de usuario</th>
-                  </tr>
+                    <td>2</td>
+                    <td>Francisca Belén
+                    </td>
+                    <td>Riquelme Valenzuela</td>
+                    <td> francisca@invensys.cl</td>
+                    <td>francisca1</td>
                   </tfoot>
                 </table>
               </div>
