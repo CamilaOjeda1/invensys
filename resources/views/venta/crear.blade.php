@@ -38,19 +38,14 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-<<<<<<< HEAD
-                                    <label for="exampleInputEmail1">Código barra</label>
-                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlenght="15">
-=======
-                                    <label for="exampleInputEmail1">Código barra (Debe contener ocho números)</label>
-                                    <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" maxlenght="15">
->>>>>>> e99e384dcf536c78ff83bec6ab4cd8b8a6466806
+                                    <label for="exampleInputEmail1">Código barra (Debe contener ocho caracteres)</label>
+                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlenght="8">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Cantidad</label>
-                                    <input type="number" class="form-control" id="cantidad" name="cantidad" maxlenght="45">
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad" maxlenght="45" value="1">
                                 </div>
                             </div>
                         </div>
@@ -175,15 +170,7 @@ $(document).ready(function(){
                   $("#detalle_venta").append(producto);
                   var valor = parseInt($('.valor_total_d').text());
                   $(".valor_total_d").html(valor + precio_final);
-                  /*$('#productoResultado').html(`
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">${response.producto.nombre_producto}</h5>
-                                <p class="card-text">Descripción: ${response.producto.descripcion}</p>
-                                <p class="card-text">Precio: $${response.producto.precio_venta}</p>
-                            </div>
-                        </div>
-                    `);*/
+                  $("#codigo_barra").val("");
                 } else {
                     $('#productoResultado').html(`<div class="alert alert-danger">${response.message}</div>`);
                 }

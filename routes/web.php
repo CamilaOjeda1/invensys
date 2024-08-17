@@ -7,6 +7,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('login');
@@ -15,9 +16,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/usuarios/lista', function () {
+/*Route::get('/usuarios/lista', function () {
     return view('administracion.usuarios/lista');
-})->name('usuarios.lista');
+})->name('usuarios.lista');*/
 
 Route::get('/recupera', function () {
     return view('recupera');
@@ -32,6 +33,9 @@ Route::get('/inicio', function () {
 })->name('inicio')->middleware('auth');
 
 //Route::resource('producto', ProductoController::class);
+Route::get('/usuarios/lista', [UserController::class, 'index'])->name('usuarios.lista')->middleware('auth');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
 Route::get('producto', [ProductoController::class, 'index'])->name('producto.index')->middleware('auth');
 Route::post('producto/store', [ProductoController::class, 'store'])->name('producto.store');
 Route::get('producto/crear', [ProductoController::class, 'create'])->name('producto.crear')->middleware('auth');

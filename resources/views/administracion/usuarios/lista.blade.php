@@ -33,35 +33,29 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
                     <th>Nombres</th>
-                    <th>Apellidos</th>
                     <th>Email</th>
-                    <th>Nombre de usuario</th>
+                    <th>Fecha creación</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Esteban Antonio
-                    </td>
-                    <td>Sánchez Corvalán</td>
-                    <td> esteban@invensys.cl</td>
-                    <td>esteban1</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <td>2</td>
-                    <td>Francisca Belén
-                    </td>
-                    <td>Riquelme Valenzuela</td>
-                    <td> francisca@invensys.cl</td>
-                    <td>francisca1</td>
-                  </tfoot>
+                    @foreach($usuarios as $u)
+                    <tr>
+                        <td>{{ $u->id }}</td>
+                        <td>{{ $u->name }}</td>
+                        <td>{{ $u->email }}</td>                     
+                        <td>{{ $u->created_at }}</td>                     
+                    </tr>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->

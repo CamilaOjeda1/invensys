@@ -34,36 +34,33 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <form action="{{ route('users.store') }}" method="POST">
+                  @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombres</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar nombres">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="ingresar nombres" maxlength="250">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Apellidos</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar apellidos">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar usuario">
+                    <label for="exampleInputEmail1">Correo</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="ingresar correo" maxlength="250">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Contraseña</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ingresar contraseña">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="ingresar contraseña" maxlength="50" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Repita contraseña</label>
+                    <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="repita contraseña" maxlength="50">
                 </div>
                 <div class="row mt-3 justify-content-center">
-                    <!-- /.col -->
                     <div class="col-2 d-flex justify-content-center">
                       <button type="submit" class="btn btn-success btn-block">Guardar</button>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                       <a href="{{ route('usuarios.lista') }}" class="btn btn-primary btn-block">Volver</a>
                     </div>
-                    <!-- /.col -->
                   </div>
+              </form>
               </div>
               <!-- /.card-body -->
             </div>
