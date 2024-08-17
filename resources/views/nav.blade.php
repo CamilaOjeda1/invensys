@@ -106,11 +106,15 @@
               <li class="nav-item">
                 <a href="{{ route('usuarios.lista') }}" class="nav-link">
                   <i class="fas fa-users nav-icon"></i>
-                  <p>Usuarios</p>
+                  <p>Gestión de Usuarios</p>
                 </a>
               </li>
-            </ul>
-          </li>
+              <li class="nav-item">
+                <a href="{{ route('roles.lista') }}" class="nav-link">
+                  <i class="fas fa-users nav-icon"></i>
+                  <p>Gestión de Roles</p>
+                </a>
+              </li>
           <li class="nav-item">
             <a href="{{ route('cerrar_sesion') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

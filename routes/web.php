@@ -73,3 +73,7 @@ Route::get('/proveedor/crear', function () {
 Route::get('categoria', [CategoriaController::class, 'index'])->name('categoria.index')->middleware('auth');
 Route::post('categoria/store', [CategoriaController::class, 'store'])->name('categoria.store');
 Route::get('categoria/crear', [CategoriaController::class, 'create'])->name('categoria.crear')->middleware('auth');
+
+Route::get('/roles/lista', function () {
+    return view('administracion.roles.lista');
+})->name('roles.lista')->middleware('auth');
