@@ -44,6 +44,13 @@
                         {{ session('success2') }} (ID: {{ session('producto_id') }})
                     </div>
                 @endif
+                <div class="row">
+                  <div class="col-12">
+                    <span class="badge badge-success">Producto con fecha de vencimiento mayor a 5 días</span><br>
+                    <span class="badge badge-warning">Producto próximo a vencer (menos de 5 días)</span><br>
+                    <span class="badge badge-danger">Producto con fecha vencida</span>
+                  </div>
+                </div> 
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -64,7 +71,23 @@
                             <td>{{ $producto->id_producto }}</td>
                             <td>{{ $producto->nombre_producto }}</td>
                             <td>{{ $producto->codigo_barra }}</td>
-                            <td>{{ $producto->fecha_vencimiento }}</td>
+                            @php
+                                $fecha = \Carbon\Carbon::parse($producto->fecha_vencimiento);
+                                $hoy = \Carbon\Carbon::now();
+
+                                $color = 'badge-success'; // Verde por defecto para fechas futuras más lejanas
+
+                                $diasDiferencia = $fecha->diffInDays($hoy, false); // Calcula la diferencia en días, con signo
+
+                                if ($diasDiferencia >= 0) {
+                                    $color = 'badge-danger'; // Rojo si es hoy o pasada
+                                } elseif ($diasDiferencia < 0 && $diasDiferencia >= -5) {
+                                    $color = 'badge-warning'; // Amarillo si está dentro de los próximos 5 días y es futura
+                                }
+
+                            @endphp
+                            <td><span class="badge {{ $color }}" style="font-size: 15px;">
+                              {{ date('d-m-Y', strtotime($producto->fecha_vencimiento)) }}</span></td>
                             <td>{{ $producto->precio_compra }}</td>
                             <td>{{ $producto->precio_venta }}</td>
                             <td>{{ $producto->cantidad }}</td>
