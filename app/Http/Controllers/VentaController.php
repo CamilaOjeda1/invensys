@@ -17,9 +17,16 @@ class VentaController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        $ventas = Venta::with('productos.producto')->get();
-        $ventas_lista = Venta::all();
-        return view('venta.index', compact('productos','ventas','ventas_lista'));
+        $ventas = DB::table('venta')
+        ->join('users', 'venta.id_usuario', '=', 'users.id')
+        ->select(
+            'venta.id_venta',
+            'venta.fecha_venta',
+            'users.name as usuario_nombre'
+        )
+        ->get();
+        //$ventas_lista = Venta::all();
+        return view('venta.index', compact('productos','ventas'));
     }
 
     /**
@@ -45,15 +52,22 @@ class VentaController extends Controller
             $venta->total_venta = 3000; 
             $venta->save();
 
-            //dd($request->input('productos'));
-            // 2. Insertar los productos asociados a la venta
             foreach ($request->input('productos') as $producto) {
+                $productoId = $producto['id'];
+                $cantidad = isset($producto['cantidad']) ? $producto['cantidad'] : 1;
+
+                // Buscar el producto en la base de datos
+                $productoDb = Producto::find($productoId);
+
                 $ventaProducto = new VentaProducto();
                 $ventaProducto->id_venta_producto = VentaProducto::max('id_venta_producto') + 1;
                 $ventaProducto->id_venta = $venta->id_venta;
                 $ventaProducto->id_producto = $producto['id'];
                 $ventaProducto->cantidad_venta = $producto['cantidad'];
                 $ventaProducto->save();
+
+                $productoDb->cantidad -= $cantidad;
+                $productoDb->save();
             }
 
             DB::commit();

@@ -43,13 +43,13 @@
                         <th>Ver</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    @foreach($ventas_lista as $vl)
+                  <tbody>                    
+                    @foreach($ventas as $vl)
                         <tr>
-                            <td>{{ $producto->id }}</td>
-                            <td>{{ $producto->fecha_venta }}</td>
-                            <td>{{ $producto->id_usuario }}</td>
-                            <td><td><button type="button" class="btn btn-block btn-warning btn-sm">Ver</button></td></td>
+                            <td>{{ $vl->id_venta }}</td>
+                            <td>{{ $vl->fecha_venta }}</td>
+                            <td>{{ $vl->usuario_nombre }}</td>
+                            <td><button type="button" class="btn btn-block btn-warning btn-sm">Ver</button></td>
                         </tr>
                     @endforeach
                   </tbody>
