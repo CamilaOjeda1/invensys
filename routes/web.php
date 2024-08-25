@@ -48,6 +48,7 @@ Route::get('/producto/buscar', [ProductoController::class, 'buscar'])->name('pro
 
 Route::get('venta', [VentaController::class, 'index'])->name('venta.index')->middleware('auth');
 Route::get('venta/crear', [VentaController::class, 'create'])->name('venta.crear')->middleware('auth');
+Route::post('venta/store', [VentaController::class, 'store'])->name('venta.store')->middleware('auth');
 
 Route::post('login', [AuthController::class, 'login'])->name('ingreso');
 Route::get('logout', [AuthController::class, 'logout'])->name('cerrar_sesion');

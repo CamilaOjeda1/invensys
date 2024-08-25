@@ -33,6 +33,11 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <form id="buscarProductoForm">
                       @csrf
                         <div class="row">
@@ -62,6 +67,8 @@
                           </div>
                       </div> 
                     </form>
+                    <form action="{{ route('venta.store') }}" method="POST">
+                      @csrf
                         <div class="card">
                             <div class="card-header">
                             <h3 class="card-title">Esta venta</h3>
@@ -83,6 +90,7 @@
                               </table>
                             </div>                            
                         </div>
+                        <input type="hidden" value="0" id="valor_array">
                         <div class="row">
                           <div class="col-12">
                             <div class="callout callout-info">
@@ -93,10 +101,11 @@
                         <div class="row">
                           <div class="col-2">
                               <div class="form-group">
-                                  <button class="btn btn-success btn-block lista_producto">Guardar venta</button>
+                                  <button class="btn btn-success btn-block">Guardar venta</button>
                               </div>
                           </div>
-                      </div>       
+                      </div>
+                    </form>     
               </div>
               <!-- /.card-body -->
             </div>
@@ -155,7 +164,7 @@ $(document).ready(function(){
 
         var codigoBarra = $('#codigo_barra').val();
         var cantidad = $('#cantidad').val();
-
+        var indice = $('#valor_array').val();
         $.ajax({
             url: "{{ route('producto.buscar') }}",
             method: "GET",
@@ -167,10 +176,21 @@ $(document).ready(function(){
                   producto += "<td>"+cantidad+"</td>";                  
                   var precio_final = response.producto.precio_venta * cantidad;
                   producto += "<td>$"+precio_final+"</td>";
+                  var x = 0;
+                  producto += '<input type="hidden" name="productos['+indice+'][id]" value="'+response.producto.id_producto+'">';
+                  producto += '<input type="hidden" name="productos['+indice+'][cantidad]" value="'+cantidad+'">';
+                  producto += '<input type="hidden" name="productos['+indice+'][valor_venta]" value="'+response.producto.precio_venta+'">';
+                  producto += '<input type="hidden" name="productos['+indice+'][valor_total]" value="'+precio_final+'">';
+
+                  producto += "</tr>";
+
                   $("#detalle_venta").append(producto);
                   var valor = parseInt($('.valor_total_d').text());
                   $(".valor_total_d").html(valor + precio_final);
                   $("#codigo_barra").val("");
+
+                  $('#valor_array').val(parseInt(indice)+1);
+
                 } else {
                     $('#productoResultado').html(`<div class="alert alert-danger">${response.message}</div>`);
                 }

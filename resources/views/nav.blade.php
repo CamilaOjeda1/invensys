@@ -115,6 +115,8 @@
                   <p>Gestión de Roles</p>
                 </a>
               </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="{{ route('cerrar_sesion') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

@@ -16,4 +16,5 @@ class Venta extends Model
         return $this->hasMany(VentaProducto::class, 'id_venta');
     }
     
+    public $timestamps = false;
 }

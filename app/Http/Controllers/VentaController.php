@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\VentaProducto;
 use App\Models\Venta;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class VentaController extends Controller
 {
@@ -32,7 +35,43 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $venta = new Venta();
+            $venta->id_venta = Venta::max('id_venta') + 1; 
+            $venta->fecha_venta = Carbon::now(); 
+            $venta->id_usuario = auth()->user()->id;
+            $venta->total_venta = 3000; 
+            $venta->save();
+
+            //dd($request->input('productos'));
+            // 2. Insertar los productos asociados a la venta
+            foreach ($request->input('productos') as $producto) {
+                $ventaProducto = new VentaProducto();
+                $ventaProducto->id_venta_producto = VentaProducto::max('id_venta_producto') + 1;
+                $ventaProducto->id_venta = $venta->id_venta;
+                $ventaProducto->id_producto = $producto['id'];
+                $ventaProducto->cantidad_venta = $producto['cantidad'];
+                $ventaProducto->save();
+            }
+
+            DB::commit();
+
+            $productos = Producto::all();
+            $ventas = Venta::with('productos.producto')->get();
+            $ventas_lista = Venta::all();
+
+            return redirect()->route('venta.crear')
+            ->with('success', 'Venta creada exitosamente.')
+            ->with('producto', $productos)
+            ->with('ventas', $ventas)
+            ->with('ventas_lista', $ventas_lista);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('venta.crear')->with('error', 'Hubo un error al crear la venta.');
+        }
     }
 
     /**

@@ -20,4 +20,6 @@ class VentaProducto extends Model
     {
         return $this->belongsTo(Producto::class, 'id_producto');
     }
+
+    public $timestamps = false;
 }
