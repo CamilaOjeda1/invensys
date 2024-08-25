@@ -45,6 +45,7 @@
                     <th>Nombres</th>
                     <th>Email</th>
                     <th>Fecha creación</th>
+                    <th>Rol usuario</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -53,7 +54,8 @@
                         <td>{{ $u->id }}</td>
                         <td>{{ $u->name }}</td>
                         <td>{{ $u->email }}</td>                     
-                        <td>{{ $u->created_at }}</td>                     
+                        <td>{{ $u->created_at }}</td> 
+                        <td>{{ $u->rol_usuario }}</td>               
                     </tr>
                   @endforeach
                 </table>

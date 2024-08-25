@@ -46,8 +46,12 @@
                     <th>Email</th>
                     <th>Rol</th>
                   </tr>
-                  </thead>
-                  <tbody>                   
+                </thead>
+                  <tbody>  
+                    <td>1</td>
+                    <td>Camila Ojeda</td>
+                    <td>camila.os95@gmail.com</td>
+                    <td>Administrador</td>               
                     </tr>
                 </table>
               </div>
