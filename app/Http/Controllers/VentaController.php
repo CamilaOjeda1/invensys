@@ -38,7 +38,8 @@ class VentaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Función que guarda la venta y los productos asociados a ella. 
+     * Además actualiza el stock del producto insertado. 25082024
      */
     public function store(Request $request)
     {
