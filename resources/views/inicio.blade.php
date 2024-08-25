@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Inicio</h1>
+            <h1>Bienvenido a Invensys</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active"></li>
             </ol>
           </div>
         </div>
@@ -64,9 +64,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
-              <div class="card card-success">
+              <div class="card card-danger">
                 <div class="card-header">
-                  <h3 class="card-title">Bar Chart</h3>
+                  <h3 class="card-title"><i class="fas fa-bell"></i> Productos vencidos</h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -77,16 +77,37 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                      <th style="width: 10px">ID</th>
+                      <th>Producto</th>
+                      <th>Fecha vencimiento</th>
+                      <th style="width: 40px">Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($productosVencidos as $pv)
+                        <tr>
+                            <td>{{ $pv->id_producto }}</td>
+                            <td>{{ $pv->nombre_producto }}</td>
+                            <td><span class="badge badge-danger" style="font-size: 15px;">
+                              {{ date('d-m-Y', strtotime($pv->fecha_vencimiento)) }}</span></td>
+                            <td>{{ $pv->cantidad }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                  <!--<div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 572px;" width="715" height="312" class="chartjs-render-monitor"></canvas>
-                  </div>
+                  </div>-->
                 </div>                
               </div>
             </div>
             <div class="col-md-6">
-              <div class="card card-danger">
+              <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title">Donut Chart</h3>
+                  <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Prodcutos próximos a vencer (a 5 o menos días)</h3>
   
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -98,7 +119,28 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                      <th style="width: 10px">ID</th>
+                      <th>Producto</th>
+                      <th>Fecha vencimiento</th>
+                      <th style="width: 40px">Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($productosProximosAVencer as $ppv)
+                        <tr>
+                            <td>{{ $ppv->id_producto }}</td>
+                            <td>{{ $ppv->nombre_producto }}</td>
+                            <td><span class="badge badge-warning" style="font-size: 15px;">
+                              {{ date('d-m-Y', strtotime($ppv->fecha_vencimiento)) }}</span></td>
+                            <td>{{ $ppv->cantidad }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                  </table>
+                  <!--<canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>-->
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -131,12 +173,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+  @include('footer') 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

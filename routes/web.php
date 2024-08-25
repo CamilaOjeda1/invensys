@@ -28,9 +28,11 @@ Route::get('/usuarios/crear', function () {
     return view('administracion.usuarios/crear');
 })->name('usuarios.crear');
 
-Route::get('/inicio', function () {
+/*Route::get('/inicio', function () {
     return view('inicio');
-})->name('inicio')->middleware('auth');
+})->name('inicio')->middleware('auth');*/
+
+Route::get('/inicio', [ProductoController::class, 'inicio'])->name('inicio')->middleware('auth');
 
 //Route::resource('producto', ProductoController::class);
 Route::get('/usuarios/lista', [UserController::class, 'index'])->name('usuarios.lista')->middleware('auth');

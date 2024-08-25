@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Marca;
 use App\Models\Proveedor;
 use App\Models\Categoria;
+use Carbon\Carbon;
 
 class ProductoController extends Controller
 {
@@ -17,6 +18,19 @@ class ProductoController extends Controller
     {
         $productos = Producto::where('vigencia', 1)->get();
         return view('producto.index', compact('productos'));
+    }
+
+    public function inicio()
+    {
+        $hoy = Carbon::now();
+        $cincoDiasDespues = $hoy->copy()->addDays(5);
+
+        $productosVencidos = Producto::where('fecha_vencimiento', '<', Carbon::now())->where('vigencia', 1)->get();
+        $productosProximosAVencer = Producto::where('fecha_vencimiento', '>=', $hoy)
+        ->where('fecha_vencimiento', '<=', $cincoDiasDespues)
+        ->where('vigencia', 1)
+        ->get();
+        return view('inicio', compact('productosVencidos','productosProximosAVencer'));
     }
 
     /**
