@@ -12,7 +12,9 @@ use Carbon\Carbon;
 class ProductoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Este método cálcula la fecha actual y la fecha 5 días después y recupera
+     * los productos vencidos y los productos que están próximos a vencer dentro de los próximos 5 días
+     * Luego devuelve la vista inicio que muestra esos productos
      */
     public function index()
     {

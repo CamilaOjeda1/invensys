@@ -107,7 +107,7 @@
             <div class="col-md-6">
               <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Prodcutos próximos a vencer (a 5 o menos días)</h3>
+                  <h3 class="card-title"><i class="fas fa-exclamation-triangle"></i> Productos próximos a vencer (a 5 o menos días)</h3>
   
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
