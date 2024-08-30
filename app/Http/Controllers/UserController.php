@@ -27,7 +27,7 @@ class UserController extends Controller
     /**
      * Valida los datos recibidos del formulario de creación de usuario
      * Encripta la contraseña y guarda el nuevo usuario en la base de datos.
-     * En Laravel las contraseñas se guardan de manera segura mediante un proceso de hashing
+     * En Laravel las contraseñas se guardan de manera segura mediante un proceso de hashing.
      */
     public function store(Request $request)
     {

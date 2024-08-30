@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Código barra (Debe contener ocho caracteres)</label>
+                                    <label for="exampleInputEmail1">Código barra (Debe contener trece números)</label>
                                     <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlenght="8">
                                 </div>
                             </div>

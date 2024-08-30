@@ -8,7 +8,8 @@ use App\Models\Marca;
 class MarcaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtiene las marcas que están vigentes
+     * Luego retorna la vista marca.index con las marcas obtenidas
      */
     public function index()
     {

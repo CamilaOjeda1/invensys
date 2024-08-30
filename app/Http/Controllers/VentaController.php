@@ -12,7 +12,9 @@ use Carbon\Carbon;
 class VentaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Obtiene todos los productos disponibles
+     * Luego obtiene una lista de ventas junto con el nombre del usuario que realizó cada venta
+     * Retorna la vista venta.index con los productos y ventas obtenidos
      */
     public function index()
     {
@@ -47,12 +49,13 @@ class VentaController extends Controller
 
         try {
             $venta = new Venta();
-            $venta->id_venta = Venta::max('id_venta') + 1; 
-            $venta->fecha_venta = Carbon::now(); 
-            $venta->id_usuario = auth()->user()->id;
-            $venta->total_venta = 3000; 
-            $venta->save();
+            $venta->id_venta = Venta::max('id_venta') + 1; //Asigna el siguiente ID de venta
+            $venta->fecha_venta = Carbon::now(); //Establece la fecha actual
+            $venta->id_usuario = auth()->user()->id; //Asigna el ID del usuario autenticado
+            $venta->total_venta = 3000; //Establece el total de la venta
+            $venta->save(); //Guarda la venta en la base de datos
 
+            //Procesa cada producto asociado a la venta
             foreach ($request->input('productos') as $producto) {
                 $productoId = $producto['id'];
                 $cantidad = isset($producto['cantidad']) ? $producto['cantidad'] : 1;
@@ -60,29 +63,34 @@ class VentaController extends Controller
                 // Buscar el producto en la base de datos
                 $productoDb = Producto::find($productoId);
 
+                // Crea una nueva instancia de VentaProducto
                 $ventaProducto = new VentaProducto();
-                $ventaProducto->id_venta_producto = VentaProducto::max('id_venta_producto') + 1;
-                $ventaProducto->id_venta = $venta->id_venta;
+                $ventaProducto->id_venta_producto = VentaProducto::max('id_venta_producto') + 1; //Asigna el siguiente ID de venta-producto
+                $ventaProducto->id_venta = $venta->id_venta; //Asocia la venta con el producto
                 $ventaProducto->id_producto = $producto['id'];
                 $ventaProducto->cantidad_venta = $producto['cantidad'];
-                $ventaProducto->save();
+                $ventaProducto->save(); //Guarda la relación venta-producto en la base de datos 
 
+                // Actualiza la cantidad del producto en stock
                 $productoDb->cantidad -= $cantidad;
                 $productoDb->save();
             }
 
             DB::commit();
 
+            //Obtiene nuevamente los productos y ventas después de la transacción
             $productos = Producto::all();
             $ventas = Venta::with('productos.producto')->get();
             $ventas_lista = Venta::all();
 
+            // Redirige a la vista de creación de ventas con un mensaje de éxito
             return redirect()->route('venta.crear')
             ->with('success', 'Venta creada exitosamente.')
             ->with('producto', $productos)
             ->with('ventas', $ventas)
             ->with('ventas_lista', $ventas_lista);
 
+            //Reinvierte la transacción en caso de error
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->route('venta.crear')->with('error', 'Hubo un error al crear la venta.');
