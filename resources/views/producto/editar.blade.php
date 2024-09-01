@@ -53,7 +53,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Código barra</label>
-                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlength="10" onkeyup="mayus(this);" value="{{ $producto->codigo_barra }}">
+                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlength="13" onkeyup="mayus(this);" value="{{ $producto->codigo_barra }}">
                                 </div>
                             </div>
                             <div class="col-6">
