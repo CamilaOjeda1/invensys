@@ -51,6 +51,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         Producto::create($request->all());
         $productos = Producto::all();
         return view('producto.index', compact('productos'));
