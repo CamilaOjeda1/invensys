@@ -32,7 +32,7 @@
           <div class="col-lg-4 col-6">          
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>50</h3>
+                <h3><?php echo $ventasHoy; ?></h3>
                 <p>Ventas hoy</p>
               </div>
               <div class="icon">
@@ -43,7 +43,7 @@
           <div class="col-lg-4 col-6">          
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>140</h3>
+                <h3><?php echo $ventasMes; ?></h3>
                 <p>Ventas este mes</p>
               </div>
               <div class="icon">
@@ -54,7 +54,7 @@
           <div class="col-lg-4 col-6">          
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>440</h3>
+                <h3><?php echo $ventasTotales; ?></h3>
                 <p>Total ventas</p>
               </div>
               <div class="icon">
