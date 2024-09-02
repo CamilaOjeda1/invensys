@@ -8,6 +8,7 @@ use App\Models\Marca;
 use App\Models\Proveedor;
 use App\Models\Categoria;
 use Carbon\Carbon;
+use App\Models\Venta;
 
 class ProductoController extends Controller
 {
@@ -26,13 +27,22 @@ class ProductoController extends Controller
     {
         $hoy = Carbon::now();
         $cincoDiasDespues = $hoy->copy()->addDays(5);
+        $mesActual = Carbon::now()->startOfMonth();
 
+        $ventasHoy = Venta::whereDate('fecha_venta', $hoy)->count();
+
+        // Contar ventas de este mes
+        $ventasMes = Venta::where('fecha_venta', '>=', $mesActual)->count();
+        
+        // Contar ventas totales
+        $ventasTotales = Venta::count();
+                
         $productosVencidos = Producto::where('fecha_vencimiento', '<', Carbon::now())->where('vigencia', 1)->get();
         $productosProximosAVencer = Producto::where('fecha_vencimiento', '>=', $hoy)
         ->where('fecha_vencimiento', '<=', $cincoDiasDespues)
         ->where('vigencia', 1)
         ->get();
-        return view('inicio', compact('productosVencidos','productosProximosAVencer'));
+        return view('inicio', compact('productosVencidos','productosProximosAVencer','ventasHoy','ventasMes','ventasTotales'));
     }
 
     /**
@@ -51,7 +61,6 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         Producto::create($request->all());
         $productos = Producto::all();
         return view('producto.index', compact('productos'));
