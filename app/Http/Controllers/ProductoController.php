@@ -8,6 +8,7 @@ use App\Models\Marca;
 use App\Models\Proveedor;
 use App\Models\Categoria;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -51,8 +52,9 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        DB::enableQueryLog();
         Producto::create($request->all());
+        $queries = DB::getQueryLog();
         $productos = Producto::all();
         return view('producto.index', compact('productos'));
     }

@@ -53,7 +53,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Código barra</label>
-                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlength="10" onkeyup="mayus(this);">
+                                    <input type="text" class="form-control" id="codigo_barra" name="codigo_barra" maxlength="13" onkeyup="mayus(this);">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -103,7 +103,7 @@
                                     <select id="proveedor" name="id_proveedor" class="form-control">
                                         <option value="0">Seleccione proveedor</option>
                                         @foreach ($proveedor as $p)
-                                            <option value="{{ $p->id_proveedor }}">{{ $p->nombre }}</option>
+                                            <option value="{{ $p->id_proveedor }}">{{ $p->nombre_proveedor }}</option>
                                         @endforeach
                                     </select>
                                 </div>
