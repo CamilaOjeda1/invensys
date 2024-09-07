@@ -52,7 +52,7 @@ class ProductoController extends Controller
     public function create()
     {
         $marcas = Marca::all();
-        $proveedor = Proveedor::all();
+        $proveedor = Proveedor::where('vigencia',1)->get();
         $categoria = Categoria::all();
         return view('producto.crear', compact('marcas','proveedor','categoria'));
     }
@@ -66,7 +66,7 @@ class ProductoController extends Controller
         DB::enableQueryLog();
         Producto::create($request->all());
         $queries = DB::getQueryLog();
-        $productos = Producto::all();
+        $productos = Producto::where('vigencia',1)->get();
         return view('producto.index', compact('productos'));
     }
 
