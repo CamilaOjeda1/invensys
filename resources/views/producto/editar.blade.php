@@ -105,7 +105,7 @@
                                         <option value="0">Seleccione proveedor</option>
                                         @foreach ($proveedor as $p)
                                             <option value="{{ $p->id_proveedor }}"
-                                                {{ $producto->id_proveedor == $p->id_proveedor ? 'selected' : '' }}>{{ $p->nombre }}</option>
+                                                {{ $producto->id_proveedor == $p->id_proveedor ? 'selected' : '' }}>{{ $p->nombre_proveedor }}</option>
                                         @endforeach
                                     </select>
                                 </div>

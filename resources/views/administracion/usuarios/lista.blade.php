@@ -45,7 +45,6 @@
                     <th>Nombres</th>
                     <th>Email</th>
                     <th>Fecha creación</th>
-                    <th>Rol usuario</th>
                   </tr>
                   </thead>
                   <tbody>
