@@ -2,7 +2,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b><img src="{{ config('app.sys_logo_url') }}" alt="Logo_invensys" width="40"> {{ config('app.sys_name') }}</a>
+    <a href="../../index2.html"><b><img src="{{ asset('vendor/dist/img/logo_original.png') }}" alt="Logo_invensys" width="200"></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
