@@ -31,6 +31,7 @@ class ProductoController extends Controller
         $mesActual = Carbon::now()->startOfMonth();
 
         $ventasHoy = Venta::whereDate('fecha_venta', $hoy)->count();
+        $sumaVentasHoy = Venta::whereDate('fecha_venta', $hoy)->sum('total_venta');
 
         // Contar ventas de este mes
         $ventasMes = Venta::where('fecha_venta', '>=', $mesActual)->count();
@@ -43,7 +44,7 @@ class ProductoController extends Controller
         ->where('fecha_vencimiento', '<=', $cincoDiasDespues)
         ->where('vigencia', 1)
         ->get();
-        return view('inicio', compact('productosVencidos','productosProximosAVencer','ventasHoy','ventasMes','ventasTotales'));
+        return view('inicio', compact('productosVencidos','productosProximosAVencer','ventasHoy','ventasMes','ventasTotales','sumaVentasHoy'));
     }
 
     /**

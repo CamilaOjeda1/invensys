@@ -32,8 +32,8 @@
           <div class="col-lg-4 col-6">          
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo $ventasHoy; ?></h3>
-                <p>Ventas hoy</p>
+                <h3><?php echo $ventasHoy.'/$'.number_format($sumaVentasHoy, 0, '', '.'); ?></h3>
+                <p>Ventas hoy / Monto ventas hoy ($)</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
