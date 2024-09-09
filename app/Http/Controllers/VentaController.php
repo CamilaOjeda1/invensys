@@ -52,7 +52,7 @@ class VentaController extends Controller
             $venta->id_venta = Venta::max('id_venta') + 1; //Asigna el siguiente ID de venta
             $venta->fecha_venta = Carbon::now(); //Establece la fecha actual
             $venta->id_usuario = auth()->user()->id; //Asigna el ID del usuario autenticado
-            $venta->total_venta = 3000; //Establece el total de la venta
+            $venta->total_venta = $request->input('valor_total_d_in'); //Establece el total de la venta
             $venta->save(); //Guarda la venta en la base de datos
 
             //Procesa cada producto asociado a la venta

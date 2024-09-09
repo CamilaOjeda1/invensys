@@ -95,6 +95,7 @@
                           <div class="col-12">
                             <div class="callout callout-info">
                               <h5>Total venta: $<span class="valor_total_d">0</span></h5>
+                              <input type="hidden" id="valor_total_d_in" name="valor_total_d_in">
                             </div>
                           </div>
                         </div>
@@ -187,6 +188,7 @@ $(document).ready(function(){
                   $("#detalle_venta").append(producto);
                   var valor = parseInt($('.valor_total_d').text());
                   $(".valor_total_d").html(valor + precio_final);
+                  $("#valor_total_d_in").val(valor + precio_final);
                   $("#codigo_barra").val("");
 
                   $('#valor_array').val(parseInt(indice)+1);
