@@ -48,7 +48,7 @@ class ProductoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Formulario para crear el producto, los productos vigentes son igual a 1
      */
     public function create()
     {
@@ -59,7 +59,7 @@ class ProductoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda el nuevo producto en la base de datos
      */
     public function store(Request $request)
     {
@@ -80,7 +80,7 @@ class ProductoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar el producto
      */
     public function edit(string $id)
     {
